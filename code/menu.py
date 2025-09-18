@@ -23,8 +23,8 @@ class Menu:
             self.window.blit(source=self.surf, dest=self.rect)  # receive and draw image on screen
 
             # Show title menu (text)
-            self.menu_text(50, 'Mountain', COLOR_ORANGE, ((WIN_WIDTH / 2), 70))
-            self.menu_text(50, 'Shooter', COLOR_ORANGE, ((WIN_WIDTH / 2), 120))
+            self.menu_text(50, 'Mountain', COLOR_WHITE, ((WIN_WIDTH / 2), 70))
+            self.menu_text(50, 'Shooter', COLOR_WHITE, ((WIN_WIDTH / 2), 120))
             # Show options menu (text)
             for i in range(len(MENU_OPTION)):
                 self.menu_text(20, MENU_OPTION[i], COLOR_WHITE, ((WIN_WIDTH / 2), 200 + 25 * i))
