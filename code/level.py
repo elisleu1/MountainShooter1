@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import sys
+import random
 
 import pygame
 
@@ -21,6 +22,8 @@ class Level:
         if game_mode in [MENU_OPTION[1], MENU_OPTION[2]]:
             self.entity_list.append(EntityFactory.get_entity('Player2'))
 
+        pygame.time.set_timer(EVENT_ENEMY, SPAWNER)
+
     def run(self):
         pygame.mixer_music.load('./asset/Level1.mp3')
         pygame.mixer_music.play(-1)
@@ -37,6 +40,10 @@ class Level:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+                if event.type == EVENT_ENEMY:
+                    choice = random.choice(('Enemy1', 'Enemy2'))
+                    self.entity_list.append(EntityFactory.get_entity(choice))
+
 
 
             pygame.display.flip()

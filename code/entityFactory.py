@@ -1,7 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import  random
 from code.background import Background
 from code.player import  Player
+from code.enemy import Enemy
 from code.const import WIN_WIDTH, WIN_HEIGHT
 
 
@@ -19,4 +21,8 @@ class EntityFactory:
                 return Player('Player1', (10, WIN_HEIGHT / 2 -30 ))
             case 'Player2':
                 return Player('Player2', (10, WIN_HEIGHT / 2 + 30))
+            case 'Enemy1':
+                return Enemy('Enemy1', (WIN_WIDTH + 10, random.randint(0,WIN_HEIGHT)))
+            case 'Enemy2':
+                return Enemy('Enemy2', (WIN_WIDTH + 10, random.randint(0, WIN_HEIGHT)))
         return None
