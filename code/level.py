@@ -4,7 +4,7 @@ import sys
 
 import pygame
 
-from code.const import WIN_HEIGHT, COLOR_WHITE
+from code.const import *
 from code.entity import Entity
 from code.entityFactory import EntityFactory
 
@@ -18,16 +18,18 @@ class Level:
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity('Level1Bg'))
         self.entity_list.append(EntityFactory.get_entity('Player1'))
+        if game_mode in [MENU_OPTION[1], MENU_OPTION[2]]:
+            self.entity_list.append(EntityFactory.get_entity('Player2'))
 
     def run(self):
+        pygame.mixer_music.load('./asset/Level1.mp3')
+        pygame.mixer_music.play(-1)
         clock = pygame.time.Clock()
         while True:
             clock.tick(60)
-
-
             for ent in self.entity_list:
                 self.window.blit(source=ent.surf, dest= ent.rect)
-                ent.move()
+                ent.move() # type: ignore
                 self.level_text(20, f'{self.name} - Timeout: {self.timeout / 1000 :.1f}', COLOR_WHITE, (10, 20))
                 self.level_text(20, f'fps: {clock.get_fps():.0f}', COLOR_WHITE, (10, 300))
 

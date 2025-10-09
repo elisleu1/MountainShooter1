@@ -12,5 +12,5 @@ class Entity(ABC):
         self.rect = self.surf.get_rect(left=position[0], top=position[1])
         self.speed = 0
     @abstractstaticmethod
-    def move(self):
+    def move(self,):
         pass
